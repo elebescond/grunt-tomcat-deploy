@@ -11,12 +11,12 @@
 module.exports = function(grunt) {
 
   var tomcat = grunt.config('tomcat_deploy');
-
+  if(tomcat === undefined)
+    return
   var archive = tomcat.dist + '.war';
 
   grunt.loadNpmTasks('grunt-zip');
   
-  grunt.config('clean', { build: [archive] });
   grunt.config('zip', {
     war: {
       cwd: tomcat.dist,
@@ -25,6 +25,6 @@ module.exports = function(grunt) {
     }
   });
   
-  grunt.registerTask('tomcat_war', ['clean', 'zip:war']);
+  grunt.registerTask('tomcat_war', ['zip:war']);
 
 };

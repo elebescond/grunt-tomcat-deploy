@@ -13,7 +13,7 @@ module.exports = function(grunt) {
   grunt.registerTask('tomcat_deploy_only', 'Deploy your files to a tomcat server.', function() {
 
     var done = this.async();
-
+    
     grunt.config.requires('tomcat_deploy.login');
     grunt.config.requires('tomcat_deploy.password');
     grunt.config.requires('tomcat_deploy.host');
@@ -34,7 +34,7 @@ module.exports = function(grunt) {
       path: tomcat.deploy + '?path=' + tomcat.path + '&update=false',
       method: 'PUT'
     };
-
+    
     var content = '';
 
     var req = require('http').request(options, function(res) {
