@@ -32,7 +32,7 @@ grunt.initConfig({
     password: 'yyyyy',
     path: '/myapp',
     port: 8080,
-    dist: 'dist/',
+    dist: 'dist',
     deploy: '/manager/text/deploy',
     undeploy: '/manager/text/undeploy',
   },
