@@ -1,0 +1,45 @@
+{
+  "name": "grunt-tomcat-deploy",
+  "description": "A grunt task for code deployment over the Tomcat Admin Web Application.",
+  "version": "0.1.0",
+  "homepage": "https://github.com/elebescond/grunt-tomcat-deploy",
+  "author": {
+    "name": "Erwan Le Bescond",
+    "email": "erwan@majewan.fr"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/elebescond/grunt-tomcat-deploy.git"
+  },
+  "bugs": {
+    "url": "https://github.com/elebescond/grunt-tomcat-deploy/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/elebescond/grunt-tomcat-deploy/blob/master/LICENSE-MIT"
+    }
+  ],
+  "main": "Gruntfile.js",
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "devDependencies": {
+    "grunt-contrib-jshint": "~0.6.0",
+    "grunt-contrib-clean": "~0.4.0",
+    "grunt-contrib-nodeunit": "~0.2.0",
+    "grunt": "~0.4.1"
+  },
+  "peerDependencies": {
+    "grunt": "~0.4.1"
+  },
+  "keywords": [
+    "gruntplugin"
+  ],
+  "dependencies": {
+    "grunt-zip": "~0.10.0"
+  }
+}
