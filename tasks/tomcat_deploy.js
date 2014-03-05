@@ -72,9 +72,40 @@ module.exports = function(grunt) {
 
     
   });
+  var redeploy = function (done ) {
+    var tomcat = grunt.config('tomcat_deploy');
+    var http = require('http'),
+      options = {
+        host: 'localhost',
+        port: 8080,
+        path: tomcat.path
+      };
+
+    var thing = http.get(options, function(res) {
+      if( res.statusCode === 404) {
+        grunt.log.ok("tomcat_undeploy: Nothing to undeploy");
+        grunt.task.run('tomcat_deploy');
+        done();
+      }
+      else {
+        grunt.task.run('tomcat_undeploy');
+        grunt.task.run('tomcat_deploy');
+        done();
+      }
+    });
+  };
 
   grunt.registerTask('tomcat_deploy', ['tomcat_war', 'tomcat_deploy_only']);
 
-  grunt.registerTask('tomcat_redeploy', ['tomcat_undeploy', 'tomcat_war', 'tomcat_deploy']);
+  grunt.registerTask('tomcat_redeploy', function() {
+    var async= require('async');
+    var gruntDone = this.async();
+        async.parallel([
+          redeploy
+        ], function(){
+          gruntDone();
+        });
+  });
+
 
 };
