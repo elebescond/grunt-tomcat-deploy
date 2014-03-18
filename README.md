@@ -39,6 +39,9 @@ grunt.initConfig({
 })
 ```
 
+### Other tasks
+The task "tomcat_redeploy" will check if the app is deployed and removes it. It will then deploy a new version of the app.
+
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
