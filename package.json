@@ -1,7 +1,7 @@
 {
   "name": "grunt-tomcat-deploy",
   "description": "A grunt task for code deployment over the Tomcat Admin Web Application.",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "homepage": "https://github.com/elebescond/grunt-tomcat-deploy",
   "author": {
     "name": "Erwan Le Bescond",
