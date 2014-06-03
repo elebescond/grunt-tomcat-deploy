@@ -76,8 +76,8 @@ module.exports = function(grunt) {
     var tomcat = grunt.config('tomcat_deploy');
     var http = require('http'),
       options = {
-        host: 'localhost',
-        port: 8080,
+        host: tomcat.host,
+        port: tomcat.port,
         path: tomcat.path
       };
 
