@@ -101,10 +101,12 @@ module.exports = function(grunt) {
   };
 
   //no need for war task if a war exists
-  if (isDist)
+  if (isDist) {
     grunt.registerTask('tomcat_deploy', ['tomcat_war', 'tomcat_deploy_only']);
-  else
+  }
+  else {
     grunt.registerTask('tomcat_deploy', ['tomcat_deploy_only']);
+  }
 
   grunt.registerTask('tomcat_redeploy', function() {
     var async= require('async');
