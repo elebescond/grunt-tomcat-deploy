@@ -38,6 +38,19 @@ grunt.initConfig({
   },
 })
 ```
+### Options
+Additional options are available for deploy tasks.
+
+If a war file is already created by your build process you can use that file istead of having this task archive the project.
+```js
+grunt.initConfig({
+  tomcat_deploy: {
+    ...
+    war: 'app.war',
+    ...
+  },
+})
+```
 
 ### Other tasks
 The task "tomcat_redeploy" will check if the app is deployed and removes it. It will then deploy a new version of the app.

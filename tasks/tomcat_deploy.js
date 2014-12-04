@@ -9,7 +9,7 @@
 'use strict';
 
 module.exports = function(grunt) {
-
+  var isDist = !grunt.config('tomcat_deploy').war;
   grunt.registerTask('tomcat_deploy_only', 'Deploy your files to a tomcat server.', function() {
 
     var done = this.async();
@@ -21,11 +21,16 @@ module.exports = function(grunt) {
     grunt.config.requires('tomcat_deploy.deploy');
     grunt.config.requires('tomcat_deploy.path');
 
-    this.requires(['tomcat_war']);
-
-    var tomcat = grunt.config('tomcat_deploy');
-
-    var archive = tomcat.dist + '.war'
+    var archive, tomcat;
+    tomcat = grunt.config('tomcat_deploy');
+    //check to see if getting a war instead of a dist
+    if (isDist) {
+      this.requires(['tomcat_war']);
+      archive = tomcat.dist + '.war';
+    }
+    else {
+      archive = tomcat.war;
+    }
     
     var options = {
       auth: tomcat.login + ':' + tomcat.password,
@@ -95,7 +100,13 @@ module.exports = function(grunt) {
     });
   };
 
-  grunt.registerTask('tomcat_deploy', ['tomcat_war', 'tomcat_deploy_only']);
+  //no need for war task if a war exists
+  if (isDist) {
+    grunt.registerTask('tomcat_deploy', ['tomcat_war', 'tomcat_deploy_only']);
+  }
+  else {
+    grunt.registerTask('tomcat_deploy', ['tomcat_deploy_only']);
+  }
 
   grunt.registerTask('tomcat_redeploy', function() {
     var async= require('async');
