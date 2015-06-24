@@ -9,7 +9,7 @@
 'use strict';
 
 module.exports = function(grunt) {
-  var isDist = !grunt.config('tomcat_deploy').war;
+  var isDist = typeof(grunt.config('tomcat_deploy')) !== 'undefined' ? !grunt.config('tomcat_deploy').war : false;
   grunt.registerTask('tomcat_deploy_only', 'Deploy your files to a tomcat server.', function() {
 
     var done = this.async();
