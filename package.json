@@ -37,8 +37,8 @@
     "grunt": "~0.4.1"
   },
   "peerDependencies": {
-    "grunt": "~0.4.1",
-    "grunt-zip": "~0.10.0"
+    "grunt": ">=0.4.1",
+    "grunt-zip": ">=0.10.0"
   },
   "keywords": [
     "gruntplugin"
