@@ -45,10 +45,23 @@ module.exports = function(grunt) {
       tests: ['test/*_test.js'],
     },
 
+    // zip config to ensure things are overwritten
+    zip: {
+      war: {
+        cwd: 'testFolder',
+        dest: 'testWar.war',
+        src: ['testFolder/**']
+      }
+    }
+
   });
 
   // Actually load this plugin's task(s).
   grunt.loadTasks('tasks');
+
+  // log statement to ensure the zip config object hasn't been
+  // modified after the tomcat is loaded
+  grunt.log.writeln('zip: ' + JSON.stringify(grunt.config('zip')));
 
   // These plugins provide necessary tasks.
   grunt.loadNpmTasks('grunt-contrib-jshint');
